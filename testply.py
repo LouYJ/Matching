@@ -62,7 +62,7 @@ def get_objects_from_scene(sceneId):
 		seglist = id['segments']
 		obj = get_object(seglist, segments, vertex)
 		# print (obj)
-		create_ply_file(obj, 'obj' + str(id['id']) + '.ply', True)
+		create_ply_file(obj, './objects/obj' + str(id['id']) + '_'+ id['label'] +'.ply', True)
 
 
 '''
