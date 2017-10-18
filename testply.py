@@ -37,9 +37,13 @@ def get_segments(segsjson):
 		segs[segIndices[i]].append(i)
 	return segments
 
-def get_object(segments):
-	for seg in segments:
-		
+def get_object(seglist, segments, vertex):
+	tmp = []
+	obj = []
+	for seg in seglist:
+		tmp.extend(segmentsp[seg])
+	for v in tmp:
+		obj.append(vertex[tmp])
 
 def get_seg_part(plydata):
 	vertex = plydata['vertex']
