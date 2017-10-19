@@ -1,6 +1,7 @@
 import numpy as np
 import json
 import csv
+import os
 import pandas as pd
 from plyfile import PlyData, PlyElement
 
@@ -61,6 +62,8 @@ def get_objects_from_scene(sceneId):
 	for id in segGroups:
 		seglist = id['segments']
 		obj = get_object(seglist, segments, vertex)
+		if not (os.path.exists('./objects/')):
+			os.mkdir('./objects/')
 		# print (obj)
 		create_ply_file(obj, './objects/obj' + str(id['id']) + '_'+ id['label'] +'.ply', True)
 
