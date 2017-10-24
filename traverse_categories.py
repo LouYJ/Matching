@@ -11,5 +11,9 @@ def get_object_path(path):
 			objList.append(file)
 	return objList
 
-if __name__ == "__main__":
+def traverse_one_category(objList, srcobj):
+	pass
 
+if __name__ == "__main__":
+	os.system('cd objects')
+	os.system('ls')
