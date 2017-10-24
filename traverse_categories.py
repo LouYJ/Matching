@@ -15,15 +15,15 @@ def traverse_one_category(objList, srcobj_path):
 	command = './Super4PCS/build/install/bin/Super4PCS -i '
 	command = command + srcobj_path
 	cnt = 0
-	if not (os.path.exists('./results/')):
-		os.system('mkdir results')
+	if not (os.path.exists('../results/')):
+		os.system('mkdir ../results')
 	for i in objList:
-		command_tmp = command + ' ' + i + ' -o 0.7 -d 0.01 -t 1000 -n 2500 -r ./results/result' + str(cnt) +'.obj -m ' + './results/mat_super4pcs_' + str(cnt) + '.txt'
+		command_tmp = command + ' ' + i + ' -o 0.7 -d 0.01 -t 1000 -n 2500 -r ../results/result' + str(cnt) +'.obj -m ' + '../results/mat_super4pcs_' + str(cnt) + '.txt'
 		cnt = cnt + 1
 		os.system(command_tmp)
 	
 def main():
-	objList = get_object_path('./02818832/')
+	objList = get_object_path('../ShapeNetCore.v2/02818832/')
 	traverse_one_category(objList, './objects/obj37_bed.obj')
 
 
