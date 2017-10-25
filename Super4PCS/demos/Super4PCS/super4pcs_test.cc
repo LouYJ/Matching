@@ -164,6 +164,10 @@ int main(int argc, char **argv) {
 
 
   if(! outputMat.empty() ){
+      ofstream ofile;
+      ofile.open("test.txt", ios_base::app);
+      ofile << score << endl;
+      ofile.close();
       logger.Log<Utils::Verbose>( "Exporting Matrix to ",
                                   outputMat.c_str(),
                                   "..." );

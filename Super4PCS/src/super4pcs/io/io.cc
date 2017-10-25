@@ -319,8 +319,6 @@ bool IOManager::WriteMatrix(
         break;
     default:
         break;
-
-    sstr << score << endl;
     }
 
     sstr.close();
