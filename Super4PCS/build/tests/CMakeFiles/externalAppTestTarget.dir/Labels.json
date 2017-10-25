@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/CMakeFiles/externalAppTestTarget"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/CMakeFiles/externalAppTestTarget.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/CMakeFiles/externalAppTestTarget-complete.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-install.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-mkdir.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-download.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-update.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-patch.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-configure.rule"
+		},
+		{
+			"file" : "/home/jingyu/Super4PCS/build/tests/externalAppTestTarget-prefix/src/externalAppTestTarget-stamp/externalAppTestTarget-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"externalAppTestTarget"
+		],
+		"name" : "externalAppTestTarget"
+	}
+}
