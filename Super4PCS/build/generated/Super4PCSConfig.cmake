@@ -55,8 +55,8 @@ include("${CMAKE_CURRENT_LIST_DIR}/Super4PCSConfigVersion.cmake")
 check_required_components("Super4PCS")
 
 # Compute paths
-set(Super4PCS_INCLUDE_DIR "/home/jingyu/Super4PCS/build/install/include/")
-set(Super4PCS_LIB_DIR "/home/jingyu/Super4PCS/build/install/lib/")
+set(Super4PCS_INCLUDE_DIR "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/install/include/")
+set(Super4PCS_LIB_DIR "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/install/lib/")
 set(Super4PCS_LIBRARIES super4pcs_accel super4pcs_io super4pcs_algo)
 
 if(OFF)

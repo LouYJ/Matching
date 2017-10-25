@@ -1,12 +1,12 @@
-if(EXISTS "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz")
-  file("MD5" "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz" hash_value)
+if(EXISTS "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz")
+  file("MD5" "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz" hash_value)
   if("x${hash_value}" STREQUAL "x232bb90cac5f2ac77140e09a59bcffe4")
     return()
   endif()
 endif()
 message(STATUS "downloading...
      src='http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz'
-     dst='/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz'
+     dst='/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz'
      timeout='none'")
 
 
@@ -14,7 +14,7 @@ message(STATUS "downloading...
 
 file(DOWNLOAD
   "http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz"
-  "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz"
+  "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz"
   SHOW_PROGRESS
   # no TIMEOUT
   STATUS status

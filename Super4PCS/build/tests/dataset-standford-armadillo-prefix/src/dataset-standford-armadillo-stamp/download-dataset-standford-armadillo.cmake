@@ -1,12 +1,12 @@
-if(EXISTS "/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz")
-  file("MD5" "/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz" hash_value)
+if(EXISTS "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz")
+  file("MD5" "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz" hash_value)
   if("x${hash_value}" STREQUAL "x437eafa8d3d07067e17a42c727a0c28d")
     return()
   endif()
 endif()
 message(STATUS "downloading...
      src='http://graphics.stanford.edu/pub/3Dscanrep/armadillo/Armadillo_scans.tar.gz'
-     dst='/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz'
+     dst='/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz'
      timeout='none'")
 
 
@@ -14,7 +14,7 @@ message(STATUS "downloading...
 
 file(DOWNLOAD
   "http://graphics.stanford.edu/pub/3Dscanrep/armadillo/Armadillo_scans.tar.gz"
-  "/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz"
+  "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz"
   SHOW_PROGRESS
   # no TIMEOUT
   STATUS status
