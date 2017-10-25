@@ -319,6 +319,7 @@ bool IOManager::WriteMatrix(
         break;
     default:
         break;
+
     sstr << score << endl;
     }
 
@@ -326,28 +327,6 @@ bool IOManager::WriteMatrix(
 
     return status;
 }
-/*
-bool IOManager::WriteValue()
-{
-    std::ofstream sstr;
-    sstr.open(name, std::ofstream::out | std::ofstream::trunc);
-
-    bool status = false;
-
-    switch (mode) {
-    case POLYWORKS:
-        formatPolyworksMatrix(mat, sstr);
-        status = true;
-        break;
-    default:
-        break;
-    }
-
-    sstr.close();
-
-    return status;
-}
-*/
 
 bool
 IOManager::WritePly(string filename,

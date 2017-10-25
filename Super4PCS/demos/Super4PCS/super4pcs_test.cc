@@ -162,10 +162,7 @@ int main(int argc, char **argv) {
                               ": \n",
                               mat);
 
-  // Insert my code
-  // ofstream ofile;
-  // ofile.open()
-  // -----------------------------------
+
   if(! outputMat.empty() ){
       logger.Log<Utils::Verbose>( "Exporting Matrix to ",
                                   outputMat.c_str(),
@@ -173,15 +170,7 @@ int main(int argc, char **argv) {
       iomananger.WriteMatrix(outputMat, mat.cast<double>(), IOManager::POLYWORKS, score);
       logger.Log<Utils::Verbose>( "Export DONE" );
   }
-  /*
-  if(! outputMat.empty() ){
-      logger.Log<Utils::Verbose>( "Exporting Matrix to ",
-                                  outputMat.c_str(),
-                                  "..." );
-      iomananger.WirteValue();
-      logger.Log<Utils::Verbose>( "Export DONE" );
-  }
-  */
+
   if (! output.empty() ){
 
       logger.Log<Utils::Verbose>( "Exporting Registered geometry to ",
