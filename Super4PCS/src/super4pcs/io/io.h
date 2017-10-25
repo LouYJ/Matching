@@ -54,7 +54,9 @@ public:
 
   bool WriteMatrix(const std::string& name,
                    const Eigen::Ref<const Eigen::Matrix<double, 4, 4> >& mat,
-                   MATRIX_MODE mode);
+                   MATRIX_MODE mode,
+                   const int score);
+
 private:
   bool
   ReadPly(const char *name,
