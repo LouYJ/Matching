@@ -1,7 +1,7 @@
 # Make file names absolute:
 #
-get_filename_component(filename "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz" ABSOLUTE)
-get_filename_component(directory "/home/jingyu/Super4PCS/build/tests/datasets/bunny" ABSOLUTE)
+get_filename_component(filename "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz" ABSOLUTE)
+get_filename_component(directory "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/datasets/bunny" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

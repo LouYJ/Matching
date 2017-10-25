@@ -1,4 +1,4 @@
-set(file "/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz")
+set(file "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/Armadillo_scans.tar.gz")
 message(STATUS "verifying file...
      file='${file}'")
 set(expect_value "437eafa8d3d07067e17a42c727a0c28d")
@@ -16,7 +16,7 @@ does not match expected value
 Retrying download.
 ")
     file(REMOVE "${file}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -P "/home/jingyu/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/download-dataset-standford-armadillo.cmake")
+    execute_process(COMMAND ${CMAKE_COMMAND} -P "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/download-dataset-standford-armadillo.cmake")
   endif()
   math(EXPR attempt "${attempt} + 1")
 endwhile()

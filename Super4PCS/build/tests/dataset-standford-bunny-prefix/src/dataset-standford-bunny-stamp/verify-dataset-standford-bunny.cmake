@@ -1,4 +1,4 @@
-set(file "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz")
+set(file "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/bunny.tar.gz")
 message(STATUS "verifying file...
      file='${file}'")
 set(expect_value "232bb90cac5f2ac77140e09a59bcffe4")
@@ -16,7 +16,7 @@ does not match expected value
 Retrying download.
 ")
     file(REMOVE "${file}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -P "/home/jingyu/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/download-dataset-standford-bunny.cmake")
+    execute_process(COMMAND ${CMAKE_COMMAND} -P "/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/download-dataset-standford-bunny.cmake")
   endif()
   math(EXPR attempt "${attempt} + 1")
 endwhile()

@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/jingyu/Super4PCS
-BuildDirectory: /home/jingyu/Super4PCS/build
+SourceDirectory: /home/cewu/firstHDD/yujing/Matching/Super4PCS
+BuildDirectory: /home/cewu/firstHDD/yujing/Matching/Super4PCS/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -33,7 +33,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EST
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/jingyu/Super4PCS"
+ConfigureCommand: "/usr/bin/cmake" "/home/cewu/firstHDD/yujing/Matching/Super4PCS"
 MakeCommand: /usr/bin/cmake --build . --config ""
 DefaultCTestConfigurationType: Release
 
@@ -63,9 +63,9 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: /usr/bin/git
+UpdateCommand: 
 UpdateOptions: 
-UpdateType: git
+UpdateType: 
 
 # Compiler info
 Compiler: /usr/bin/c++

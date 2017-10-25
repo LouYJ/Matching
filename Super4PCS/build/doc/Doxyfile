@@ -37,7 +37,7 @@ PROJECT_NAME           = "Super4PCS Library"
 # This could be handy for archiving the generated documentation or
 # if some version control system is used.
 
-PROJECT_NUMBER         = V1.1.3 (5c19d56)
+PROJECT_NUMBER         = V1.1.3 (3299ab1)
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer
@@ -50,14 +50,14 @@ PROJECT_BRIEF          =
 # exceed 55 pixels and the maximum width should not exceed 200 pixels.
 # Doxygen will copy the logo to the output directory.
 
-PROJECT_LOGO           = # /home/jingyu/Super4PCS/doc/images/logoSmall.png
+PROJECT_LOGO           = # /home/cewu/firstHDD/yujing/Matching/Super4PCS/doc/images/logoSmall.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
 # base path where the generated documentation will be put.
 # If a relative path is entered, it will be relative to the location
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = /home/jingyu/Super4PCS/build/doc
+OUTPUT_DIRECTORY       = /home/cewu/firstHDD/yujing/Matching/Super4PCS/build/doc
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create
 # 4096 sub-directories (in 2 levels) under the output directory of each output
@@ -598,7 +598,7 @@ FILE_VERSION_FILTER    =
 # You can optionally specify a file name after the option, if omitted
 # DoxygenLayout.xml will be used as the name of the layout file.
 
-LAYOUT_FILE            = /home/jingyu/Super4PCS/doc/layout.xml
+LAYOUT_FILE            = /home/cewu/firstHDD/yujing/Matching/Super4PCS/doc/layout.xml
 
 # The CITE_BIB_FILES tag can be used to specify one or more bib files
 # containing the references data. This must be a list of .bib files. The
@@ -608,7 +608,7 @@ LAYOUT_FILE            = /home/jingyu/Super4PCS/doc/layout.xml
 # of the bibliography can be controlled using LATEX_BIB_STYLE. To use this
 # feature you need bibtex and perl available in the search path.
 
-CITE_BIB_FILES         = #/home/jingyu/Super4PCS/doc/biblio.bib
+CITE_BIB_FILES         = #/home/cewu/firstHDD/yujing/Matching/Super4PCS/doc/biblio.bib
 
 #---------------------------------------------------------------------------
 # configuration options related to warning and progress messages
@@ -670,8 +670,8 @@ WARN_LOGFILE           = @CMAKE_CURRENT_BINARY_DIR/doc/doxygen.log
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT                  = /home/jingyu/Super4PCS/src  \
-                         /home/jingyu/Super4PCS/doc
+INPUT                  = /home/cewu/firstHDD/yujing/Matching/Super4PCS/src  \
+                         /home/cewu/firstHDD/yujing/Matching/Super4PCS/doc
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
@@ -743,8 +743,8 @@ EXCLUDE_SYMBOLS        =
 # directories that contain example code fragments that are included (see
 # the \include command).
 
-EXAMPLE_PATH           = /home/jingyu/Super4PCS/demos \
-                         /home/jingyu/Super4PCS/build/doc
+EXAMPLE_PATH           = /home/cewu/firstHDD/yujing/Matching/Super4PCS/demos \
+                         /home/cewu/firstHDD/yujing/Matching/Super4PCS/build/doc
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
@@ -765,7 +765,7 @@ EXAMPLE_RECURSIVE      = YES
 # directories that contain image that are included in the documentation (see
 # the \image command).
 
-IMAGE_PATH             = /home/jingyu/Super4PCS/doc/images
+IMAGE_PATH             = /home/cewu/firstHDD/yujing/Matching/Super4PCS/doc/images
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -926,7 +926,7 @@ HTML_FOOTER            =
 # style sheet in the HTML output directory as well, or it will be erased!
 
 HTML_STYLESHEET        =
-HTML_EXTRA_STYLESHEET  = # /home/jingyu/Super4PCS/doc/style.css
+HTML_EXTRA_STYLESHEET  = # /home/cewu/firstHDD/yujing/Matching/Super4PCS/doc/style.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1268,7 +1268,7 @@ SEARCH_INCLUDES        = YES
 # contain include files that are not input files but should be processed by
 # the preprocessor.
 
-INCLUDE_PATH           = /home/jingyu/Super4PCS/3rdparty
+INCLUDE_PATH           = /home/cewu/firstHDD/yujing/Matching/Super4PCS/3rdparty
 
 # You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard
 # patterns (like *.h and *.hpp) to filter out the header-files in the
