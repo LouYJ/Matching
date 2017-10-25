@@ -326,7 +326,7 @@ bool IOManager::WriteMatrix(
 
     return status;
 }
-
+/*
 bool IOManager::WriteValue()
 {
     std::ofstream sstr;
@@ -347,6 +347,7 @@ bool IOManager::WriteValue()
 
     return status;
 }
+*/
 
 bool
 IOManager::WritePly(string filename,
