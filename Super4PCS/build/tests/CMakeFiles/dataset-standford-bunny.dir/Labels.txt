@@ -1,0 +1,13 @@
+# Target labels
+ dataset-standford-bunny
+# Source files and their labels
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-bunny
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-bunny.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-bunny-complete.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-install.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-mkdir.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-download.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-update.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-patch.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-configure.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-bunny-prefix/src/dataset-standford-bunny-stamp/dataset-standford-bunny-build.rule

@@ -1,0 +1,13 @@
+# Target labels
+ dataset-standford-armadillo
+# Source files and their labels
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-armadillo
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-armadillo.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/CMakeFiles/dataset-standford-armadillo-complete.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-install.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-mkdir.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-download.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-update.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-patch.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-configure.rule
+/home/cewu/firstHDD/yujing/Matching/Super4PCS/build/tests/dataset-standford-armadillo-prefix/src/dataset-standford-armadillo-stamp/dataset-standford-armadillo-build.rule
