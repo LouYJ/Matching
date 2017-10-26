@@ -45,9 +45,9 @@ def create_obj_file(vertex, path, text=False):
 	f.close()
 	return
 
-def read_csv_file(path):
-	df = pd.read_csv(path, sep='\t')
-	pass
+def read_tsv_file(path):
+	tsv_data = pd.read_csv(path, sep='\t')
+	return tsv_data
 
 def get_segments(segsjson):
 	segIndices = segsjson['segIndices']
@@ -68,6 +68,10 @@ def get_object(seglist, segments, vertex):
 	for v in tmp:
 		obj.append(vertex[v])
 	return obj
+
+def find_synset(column, row, scannet_lables):
+	offset = scannet_lables[scannet_lables[column] == row]['synsetoffset']
+	return int(offset)
 
 def get_objects_from_scene(sceneId, fObj = False, fPly = False):
 	segsjson = load_json_file('scene' + sceneId + '_vh_clean_2.0.010000.segs.json')
@@ -90,9 +94,12 @@ def get_objects_from_scene(sceneId, fObj = False, fPly = False):
 			# print (obj)
 			create_ply_file(obj, './objects_ply/obj' + str(id['id']) + '_'+ id['label'] +'.ply', True)
 
+
+
 if __name__ == "__main__": 
 	get_objects_from_scene('0000_00', True, True)
-
+	offset = scannet_lables[scannet_lables['category'] == category]['synsetoffset']
+	return int(offset)
 '''
 def get_seg_part(plydata):
 	vertex = plydata['vertex']

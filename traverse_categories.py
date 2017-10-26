@@ -1,5 +1,3 @@
-# _*_ coding:utf-8 _*_ 
-
 import os
 
 def get_object_path(path):
