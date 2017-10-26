@@ -18,7 +18,7 @@ def traverse_one_category(objList, srcobj_path):
 	if not (os.path.exists('../results/')):
 		os.system('mkdir ../results')
 	for i in objList:
-		command_tmp = command + ' ' + i + ' -o 0.7 -d 0.01 -t 1000 -n 2500 -r ../results/result' + str(cnt) +'.obj -m ' + '../results/mat_super4pcs_' + str(cnt) + '.txt'
+		command_tmp = command + ' ' + i + ' -o 0.7 -d 0.01 -t 1000 -n 200 -r ../results/result' + str(cnt) +'.obj -m ' + '../results/mat_super4pcs_' + str(cnt) + '.txt'
 		cnt = cnt + 1
 		os.system(command_tmp)
 	
