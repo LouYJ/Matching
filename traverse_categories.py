@@ -11,7 +11,7 @@ def get_object_path(path):
 			objList.append(file)
 	return objList
 
-def traverse_one_category(objList, srcobj_path, n):
+def run_super4pcs(objList, srcobj_path, n):
 	command = './Super4PCS/build/install/bin/Super4PCS -i '
 	command = command + srcobj_path
 	cnt = 0
@@ -22,7 +22,7 @@ def traverse_one_category(objList, srcobj_path, n):
 		cnt = cnt + 1
 		os.system(command_tmp)
 
-def topn_objects(srcobj_path, n = 5):
+def traverse_one_category(srcobj_path):
 	file_object = open(srcobj_path, 'r')
 	tmp = file_object.readlines()
 	file_object.close()
@@ -32,8 +32,11 @@ def topn_objects(srcobj_path, n = 5):
 	offset = tmp[5][1:9]
 	objList = get_object_path('../ShapeNetCore.v2/' + offset + '/')
 	n_point = len(tmp)/2
-	traverse_one_category(objList, srcobj_path, n_point)
+	run_super4pcs(objList, srcobj_path, n_point)
 
+	return offset
+
+def topn_objects(synsetoffset, n = 5):
 	file_scores = open('../results/scores.txt')
 	scores = file_scores.readlines()
 
@@ -75,5 +78,6 @@ def main():
 
 
 if __name__ == "__main__":
-	topn_objpath, final_obj, offset = topn_objects('./objects/obj37_bed.obj')
+	offset = traverse_one_category('./objects/obj37_bed.obj')
+	topn_objpath, final_obj, offset = topn_objects(offset)
 	write_top5(topn_objpath, offset)
