@@ -2,6 +2,7 @@ import numpy as np
 import json
 import csv
 import os
+import math
 import pandas as pd
 from plyfile import PlyData, PlyElement
 
@@ -29,15 +30,14 @@ def create_ply_file(vertex, path, text=False):
 	PlyData([el], text).write(path)
 
 # Qi 17.10.19
-def create_obj_file(vertex, path, text=False):
+def create_obj_file(vertex, path, category, synset):
 	#print vertex
 	vertex = np.array(vertex, dtype=[('x', 'f4'), ('y', 'f4'), ('z', 'f4'), ('red', 'u1'), ('green', 'u1'), ('blue', 'u1'), ('alpha', 'u1'), ('label', 'u4')])
-	#print vertex[0][0]
-	#print vertex
-	print len(vertex)
-	print path
+
 	f = open(path,'w+')
-	f.write('# ' + path + '\n')
+	f.write('#Path:\n' + '#' + path + '\n')
+	f.write('#Category:\n' + '#' + category + '\n')
+	f.write('#Synset Offset:\n' + '#' + synset + '\n')
 	for i in range(0, len(vertex)):
 		#f.write('vertex' + '\n')
 		f.write('v ' + str(vertex[i][0]) + ' ' + str(vertex[i][1]) + ' ' + str(vertex[i][2]) + '\n')
@@ -45,9 +45,9 @@ def create_obj_file(vertex, path, text=False):
 	f.close()
 	return
 
-def read_csv_file(path):
-	df = pd.read_csv(path, sep='\t')
-	pass
+def read_tsv_file(path):
+	tsv_data = pd.read_csv(path, sep='\t')
+	return tsv_data
 
 def get_segments(segsjson):
 	segIndices = segsjson['segIndices']
@@ -69,30 +69,46 @@ def get_object(seglist, segments, vertex):
 		obj.append(vertex[v])
 	return obj
 
+def find_synset(column, row, scannet_lables):
+	if (column == 'id' and row == 0):
+		return 'No corresponding synsetoffset'
+		
+	offset = scannet_lables[scannet_lables[column] == row]['synsetoffset']
+	
+	if (math.isnan(float(offset))):
+		return 'No corresponding synsetoffset'
+	
+	offset = int(offset)
+	offset = "%08d"%offset
+	return offset
+
 def get_objects_from_scene(sceneId, fObj = False, fPly = False):
 	segsjson = load_json_file('scene' + sceneId + '_vh_clean_2.0.010000.segs.json')
 	aggjson = load_json_file('scene' + sceneId + '_vh_clean.aggregation.json')
 	_, vertex, face = read_ply_file('scene' + sceneId + '_vh_clean_2.labels.ply')
-	
+	scannet_labels = read_tsv_file('scannet-labels.combined.tsv')
+
 	segments = get_segments(segsjson)
 	segGroups = aggjson['segGroups']
 	for id in segGroups:
 		seglist = id['segments']
 		obj = get_object(seglist, segments, vertex)
+		syn = find_synset('id', obj[0][7], scannet_labels)
 
 		if (fObj):
 			if not (os.path.exists('./objects/')):
 				os.mkdir('./objects/')
-			create_obj_file(obj, './objects/obj' + str(id['id']) + '_'+ id['label'] +'.obj', True)
+			create_obj_file(obj, './objects/obj' + str(id['id']) + '_'+ id['label'] +'.obj', id['label'], syn)
 		if (fPly):
 			if not (os.path.exists('./objects_ply/')):
 				os.mkdir('./objects_ply')
 			# print (obj)
 			create_ply_file(obj, './objects_ply/obj' + str(id['id']) + '_'+ id['label'] +'.ply', True)
 
+
 if __name__ == "__main__": 
 	get_objects_from_scene('0000_00', True, True)
-
+	
 '''
 def get_seg_part(plydata):
 	vertex = plydata['vertex']
