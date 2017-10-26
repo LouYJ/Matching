@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from operator import itemgetter
 
 def get_object_path(path):
 	dirList = os.listdir(path)
@@ -25,7 +26,7 @@ def topn_objects(srcobj_path, n = 5):
 	file_object = open(srcobj_path, 'r')
 	tmp = file_object.readlines()
 	file_object.close()
-	if (tmp = '#No corresponding synsetoffset\n'):
+	if (tmp == '#No corresponding synsetoffset\n'):
 		print (tmp[1:])
 		return False
 	offset = tmp[5][1:9]
@@ -62,11 +63,17 @@ def topn_objects(srcobj_path, n = 5):
 		topn_objpath.append(dirList[final_obj[i]])
 
 	return topn_objpath, final_obj, offset
-	
+
+def write_top5(topn_objpath, offset):
+	f = open('../results/top5_'+offset+'.txt', w)
+	for i in topn_objpath:
+		f.write(i + '\n')
+		
 def main():
 	objList = get_object_path('../ShapeNetCore.v2/02818832/')
 	traverse_one_category(objList, './objects/obj37_bed.obj')
 
 
 if __name__ == "__main__":
-	topn_objects('./objects/obj7_desk.obj')
+	topn_objpath, final_obj, offset = topn_objects('./objects/obj37_bed.obj')
+	write_top5(topn_objpath, offset)
