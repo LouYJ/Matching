@@ -68,7 +68,7 @@ def topn_objects(synsetoffset, n = 5):
 	return topn_objpath, final_obj, offset
 
 def write_top5(topn_objpath, offset):
-	f = open('../results/top5_'+offset+'.txt', w)
+	f = open('../results/top5_'+offset+'.txt', 'w')
 	for i in topn_objpath:
 		f.write(i + '\n')
 		
@@ -78,6 +78,6 @@ def main():
 
 
 if __name__ == "__main__":
-	offset = traverse_one_category('./objects/obj37_bed.obj')
+	#offset = traverse_one_category('./objects/obj37_bed.obj')
 	topn_objpath, final_obj, offset = topn_objects(offset)
 	write_top5(topn_objpath, offset)
