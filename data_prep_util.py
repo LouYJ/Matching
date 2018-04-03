@@ -261,6 +261,25 @@ def delete_cat(categories, data_file):
                 'new_' + data_file)
 
 def rotate_point_cloud_h5(h5_file):
+    data = h5py.File(h5_file)
+    pc = data['data']
+
+    rotated_data_x = rotate_point_cloud(pc, 'x')
+    rotated_data_y = rotate_point_cloud(pc, 'y')
+    rotated_data_z = rotate_point_cloud(pc, 'z')
+
+    save_h5_seg(rotated_data_x,
+                data['label'],
+                data['pid'],
+                h5_file[:-3]+'_x.h5')
+    save_h5_seg(rotated_data_y,
+                data['label'],
+                data['pid'],
+                h5_file[:-3]+'_y.h5')
+    save_h5_seg(rotated_data_z,
+                data['label'],
+                data['pid'],
+                h5_file[:-3]+'_z.h5')
 
 
 def rotate_point_cloud(batch_data, axis='z'):
@@ -299,10 +318,12 @@ def rotate_point_cloud(batch_data, axis='z'):
 if __name__ == '__main__':
     # make_h5('./model_2048', './seg_2048', './label.txt', 'origin.h5')
     # divide_data('./origin.h5')
+
     file_list = os.listdir('.')
     for file in file_list:
         if '.h5' in file:
-            delete_cat([4, 15], file)
+            # delete_cat([4, 15], file)
+            rotate_point_cloud_h5(file)
 
 
 
