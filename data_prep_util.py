@@ -143,7 +143,7 @@ def pad_arr_rows(arr, row, pad='edge'):
     if pad == 'constant':
         return np.lib.pad(arr, ((0, row-arr.shape[0]), (0, 0)), 'constant', (0, 0))
 
-# Me: Transform my data to h5 file
+# Yujing: Transform my data to h5 file
 def save_h5_seg(data, label, pid, h5_filename, data_dtype='float32', label_dtype='uint8', pid_dtype='uint8'):
     h5_fout = h5py.File(h5_filename)
     h5_fout.create_dataset(
@@ -260,29 +260,32 @@ def delete_cat(categories, data_file):
                 new_data['pid'],
                 'new_' + data_file)
 
-def rotate_point_cloud_h5(h5_file):
+def rotate_point_cloud_h5(h5_file, rand=1, degree=0):
     data = h5py.File(h5_file)
     pc = data['data']
 
-    rotated_data_x = rotate_point_cloud(pc, 'x')
-    rotated_data_y = rotate_point_cloud(pc, 'y')
-    rotated_data_z = rotate_point_cloud(pc, 'z')
+    rotated_data_x = rotate_point_cloud(pc, 'x', rand, degree)
+    rotated_data_y = rotate_point_cloud(pc, 'y', rand, degree)
+    rotated_data_z = rotate_point_cloud(pc, 'z', rand, degree)
 
     save_h5_seg(rotated_data_x,
                 data['label'],
                 data['pid'],
-                h5_file[:-3]+'_x.h5')
+                h5_file[:-3]+'_x'+str(degree)+'.h5')
+    print ('Write ' + h5_file[:-3]+'_x'+str(degree)+'.h5' + ' successfully!')
     save_h5_seg(rotated_data_y,
                 data['label'],
                 data['pid'],
-                h5_file[:-3]+'_y.h5')
+                h5_file[:-3]+'_y'+str(degree)+'.h5')
+    print ('Write ' + h5_file[:-3]+'_y'+str(degree)+'.h5' + ' successfully!')
     save_h5_seg(rotated_data_z,
                 data['label'],
                 data['pid'],
-                h5_file[:-3]+'_z.h5')
+                h5_file[:-3]+'_z'+str(degree)+'.h5')
+    print ('Write ' + h5_file[:-3]+'_z'+str(degree)+'.h5' + ' successfully!')
 
 
-def rotate_point_cloud(batch_data, axis='z'):
+def rotate_point_cloud(batch_data, axis='z', rand=1, degree=0):
     """ Randomly rotate the point clouds to augument the dataset
         rotation is per shape based along up direction
         Input:
@@ -292,7 +295,11 @@ def rotate_point_cloud(batch_data, axis='z'):
     """
     rotated_data = np.zeros(batch_data.shape, dtype=np.float32)
     for k in range(batch_data.shape[0]):
-        rotation_angle = np.random.uniform() * 2 * np.pi
+        if (rand == 1):
+            rotation_angle = np.random.uniform() * 2 * np.pi
+        else:
+            rotation_angle = degree/180.0*np.pi
+
         cosval = np.cos(rotation_angle)
         sinval = np.sin(rotation_angle)
 
@@ -323,7 +330,10 @@ if __name__ == '__main__':
     for file in file_list:
         if '.h5' in file:
             # delete_cat([4, 15], file)
-            rotate_point_cloud_h5(file)
+            print ('----------Start '+file+'----------')
+            rotate_point_cloud_h5(file, rand=0, degree=45)
+            rotate_point_cloud_h5(file, rand=0, degree=90)
+            print ('----------Finish '+file+'----------')
 
 
 
