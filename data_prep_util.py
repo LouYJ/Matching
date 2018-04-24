@@ -322,30 +322,40 @@ def rotate_point_cloud(batch_data, axis='z', rand=1, degree=0):
 
 
 def h5_to_obj(h5_file, id2cat_file):
-	file = h5py.File(h5_file)
-	models = file['data']
-	labels = file['label']
+    file = h5py.File(h5_file)
+    models = file['data']
+    labels = file['label']
 
-	f = open(id2cat_file, 'r')
-	id2name = [line.split('\t')[0] for line in f]
-	id2cat = [line.split('\t')[1][:-1] for line in f]
-	f.close()
+    f = open(id2cat_file, 'r')
+    id2name = []
+    id2cat = []
+    for line in f:
+        sp = line.split('\t')
+        id2name.append(sp[0])
+        id2cat.append(sp[1][:-1])
+    f.close()
 
-	len_models = len(models)
-	test_f = open('testing_file_yujing.txt', 'a')
-	for model_idx in range(len_models):
-		tmp_name = './objs/'+h5_file[9:-3]+'_'+ ('%04d'%model_idx) +'_'+('%02d'%lables[model_idx])+'_'+id2name[lables[model_idx]]+'.pts'
-		with open(tmp_name, 'w') as pts_f:
-			pts = models[model_idx]
-			for point in pts:
-				f.write(point[0]+' '+point[1]+' '+point[2]+'\n')
-
-		test_f.write(tmp_name + ' ' + id2cat[model] + '\n')
-	test_f.close()
+    len_models = len(models)
+    with open('testing_file_yujing.txt', 'a') as test_f:
+        if not os.path.exists('objs/'):
+            os.makedirs('objs/')
+        for model_idx in range(len_models):
+            tmp_name = './objs/'+h5_file[9:-3]+'_'+ ('%04d'%model_idx) +'_'+('%02d'%labels[model_idx])+'_'+id2name[labels[model_idx][0]]+'.pts'
+            with open(tmp_name, 'w') as pts_f:
+                pts = models[model_idx]
+                for point in pts:
+                    pts_f.write(str(point[0])+' '+str(point[1])+' '+str(point[2])+'\n')
+                    
+            test_f.write(tmp_name + ' ' + id2cat[labels[model_idx][0]] + '\n')
 
 
 
 if __name__ == '__main__':
+    file_list = os.listdir('.')
+    for file in file_list:
+        if '.h5' in file:
+            h5_to_obj(file, 'all_object_categories.txt')
+
     # make_h5('./model_2048', './seg_2048', './label.txt', 'origin.h5')
     # divide_data('./origin.h5')
 
@@ -359,7 +369,6 @@ if __name__ == '__main__':
             rotate_point_cloud_h5(file, rand=0, degree=90)
             print ('----------Finish '+file+'----------')
     '''
-
 
 
 
