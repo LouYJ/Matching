@@ -351,10 +351,19 @@ def h5_to_obj(h5_file, id2cat_file):
 
 
 if __name__ == '__main__':
+    nf = open('new.txt', 'w')
+    with open('testing_file_yujing.txt', 'r') as f:
+        for line in f:
+            tmp = line[7:]
+            nf.write(tmp)
+
+    nf.close()
+    '''
     file_list = os.listdir('.')
     for file in file_list:
         if '.h5' in file:
             h5_to_obj(file, 'all_object_categories.txt')
+    '''
 
     # make_h5('./model_2048', './seg_2048', './label.txt', 'origin.h5')
     # divide_data('./origin.h5')
