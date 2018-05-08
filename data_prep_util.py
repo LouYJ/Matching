@@ -6,6 +6,7 @@ from plyfile import (PlyData, PlyElement, make2d, PlyParseError, PlyProperty)
 import numpy as np
 import h5py
 import random
+import json
 
 SAMPLING_BIN = os.path.join(BASE_DIR, 'third_party/mesh_sampling/build/pcsample')
 
@@ -349,8 +350,135 @@ def h5_to_obj(h5_file, id2cat_file):
             test_f.write(tmp_name + ' ' + id2cat[labels[model_idx][0]] + '\n')
 
 
+def divide_pts_label(file):
+    pts = []
+    label = []
+    with open(file, 'r') as pl:
+        for line in pl:
+            sp = line.split()
+            pts.append(sp[:6])
+            label.append(sp[6])
+
+    num = len(pts)
+    pts_f = open(os.path.join(file[:10], 'points/' + file[11:-4] + '.pts'), 'w')
+    label_f = open(os.path.join(file[:10], 'points_label/' + file[11:-4] + '.seg'), 'w')
+
+    for i in range(num):
+        for j in range(5):
+            pts_f.write(pts[i][j] + ' ')
+        pts_f.write(pts[i][5] + '\n')
+        label_f.write(label[i][0] + '\n')
+
+    pts_f.close()
+    label_f.close()
+
+def divide_all_pl_files(base_dir):
+    category = []
+    synset = []
+    with open('synsetoffset2category.txt') as cat_f:
+        for line in cat_f:
+            tmp = line.split('\t')
+            # print tmp
+            category.append(tmp[0])
+            synset.append(tmp[1][:-1])
+
+    for s in synset:
+        # print (s + '------------------------------')
+        path = os.path.join(base_dir, s)
+        # print path
+        if not os.path.exists(os.path.join(path, 'points')):
+            os.makedirs(os.path.join(path, 'points'))
+        if not os.path.exists(os.path.join(path, 'points_label')):
+            os.makedirs(os.path.join(path, 'points_label'))
+
+        model_list = os.listdir(path)
+        for model in model_list:
+            # print (os.path.join(path, model))
+            if not (model=='points' or model=='points_label'):
+                divide_pts_label(os.path.join(path, model))
+
+def load_json_file(path):
+    with open(path) as json_file:
+        jsondata = json.load(json_file)
+        return jsondata
+
+def overallid_to_catid_partid(json_file, seg_path, output_dir):
+    match = load_json_file(json_file)
+    seg_list = os.listdir(seg_path)
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    for name in seg_list:
+        seg_file = os.path.join(seg_path, name)
+        output_path = os.path.join(output_dir, name)
+
+        outf = open(output_path, 'w')
+        segf = open(seg_file, 'r')
+
+        for line in segf:
+            oaid = int(line.rstrip())
+            pid = match[oaid][1]
+            outf.write(str(pid) + '\r\n')
+
+        outf.close()
+        segf.close()
+
+
+def create_file_list(base_dir, out_dir):
+    category = []
+    synset = []
+    with open(os.path.join(base_dir, 'synsetoffset2category.txt'), 'r') as cat_f:
+        for line in cat_f:
+            tmp = line.split('\t')
+            category.append(tmp[0])
+            synset.append(tmp[1][:-1])
+
+    cat = {}
+    with open(os.path.join(base_dir, 'label.txt'), 'r') as cf:
+        for line in cf:
+            tmp = line.split('    ')
+            cat[tmp[1].rstrip()] = int(tmp[0])
+    '''
+    a = cat.keys()
+    a.sort()
+    for i in a:
+        print i
+
+    print '---------------------------'
+    print '---------------------------'
+    print '---------------------------'
+    '''
+
+    pts_list = os.listdir(os.path.join(base_dir, 'points'))
+    pid_list = os.listdir(os.path.join(base_dir, 'points_label'))
+    pts_list.sort()
+    pid_list.sort()
+
+    of = open(out_dir, 'w')
+    list_len = len(pts_list)
+    for i in range(list_len):
+        name = pts_list[i][:-4]
+        of.write(os.path.join('points', pts_list[i]) + ' ')
+        of.write(os.path.join('points_label', pid_list[i]) + ' ')
+        of.write(synset[cat[name]] + '\n')
+    of.close()
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
+    create_file_list('TestFile', 'testing_file_yujing.txt')
+
+    # overallid_to_catid_partid('overallid_to_catid_partid.json', 'seg_2048_overall', 'seg_2048_partid')
+
+    # divide_all_pl_files('.')
+
+    '''
     nf = open('new.txt', 'w')
     with open('testing_file_yujing.txt', 'r') as f:
         for line in f:
@@ -358,6 +486,8 @@ if __name__ == '__main__':
             nf.write(tmp)
 
     nf.close()
+    '''
+
     '''
     file_list = os.listdir('.')
     for file in file_list:
