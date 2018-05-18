@@ -439,16 +439,6 @@ def create_file_list(base_dir, out_dir):
         for line in cf:
             tmp = line.split('    ')
             cat[tmp[1].rstrip()] = int(tmp[0])
-    '''
-    a = cat.keys()
-    a.sort()
-    for i in a:
-        print i
-
-    print '---------------------------'
-    print '---------------------------'
-    print '---------------------------'
-    '''
 
     pts_list = os.listdir(os.path.join(base_dir, 'points'))
     pid_list = os.listdir(os.path.join(base_dir, 'points_label'))
@@ -464,15 +454,41 @@ def create_file_list(base_dir, out_dir):
         of.write(synset[cat[name]] + '\n')
     of.close()
 
+def ply_to_obj(plyfile, objfile):
+    plydata = PlyData.read(plyfile)
+    pc = plydata['vertex'].data
+    with open(objfile, 'w') as fout:
+        for pt in pc:
+            fout.write(str(pt[0]))
+            fout.write(' ' + str(pt[1]))
+	    fout.write(' ' + str(pt[2]))
+            fout.write('\n')
 
+def transform_all_ply(plypath, outpath, filetype, filelist=False):
+    if not (os.path.exists(outpath)):
+        os.makedirs(outpath)
+    cat_list = os.listdir(plypath)
+    
+    for cat in cat_list:
+        f = open('file_list_'+cat+'.txt', 'w')
+        print ('*----- Start catgory: %s -----*' % cat)
+        cat_path = os.path.join(plypath, cat)
+        cat_path_obj = os.path.join(outpath, cat)
+        if not (os.path.exists(cat_path_obj)):
+            os.makedirs(cat_path_obj)
+        ply_list = os.listdir(cat_path)
+        for ply in ply_list:
+            ply_to_obj(os.path.join(cat_path, ply), os.path.join(cat_path_obj, ply[:-3] + filetype))
+            f.write(ply[:-3] + filetype + ' ' + cat + '\n')
 
-
-
+        f.close()
+        print ('Finish %s!' % cat)
 
 
 
 if __name__ == '__main__':
-    create_file_list('TestFile', 'testing_file_yujing.txt')
+    transform_all_ply('shapenet_dim32_sdf_pc', 'shapenet_dim32_sdf_pc_pts', 'pts')
+    # create_file_list('TestFile', 'testing_file_yujing.txt')
 
     # overallid_to_catid_partid('overallid_to_catid_partid.json', 'seg_2048_overall', 'seg_2048_partid')
 
